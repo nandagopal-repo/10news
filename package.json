@@ -112,6 +112,6 @@
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "",
+  "author": "nandagopal",
   "license": "ISC"
 }

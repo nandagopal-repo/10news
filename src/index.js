@@ -1,6 +1,6 @@
-import urlParser from "./component";
 import './style.css';
-import moment from "./lib/moment"
+import urlParser from "./component";
+import moment from "../node_modules/moment/dist/moment"
 
 const container = document.querySelector('#container')
 const readMore = document.querySelector('#readMore')
@@ -25,8 +25,7 @@ function renderNews(res){
     const newsContainer = document.createElement('div')
     newsContainer.classList.add('news')
     newsContainer.innerHTML= `
-        <p class="news__rating">${res.score}</p>
-        <p class="news__points">points</p>
+        <p class="news__rating">${res.score} points</p>
         <p class="news__title-link"><a href="${res.url}" class="news__title">${res.title}</a> <a href="${res.url}" class="news__link">(${sName})</a></p>
         <p class="news__details">by ${res.by}  |  ${time}  |  ${res.kids.length} comments</p>
     `
@@ -46,7 +45,6 @@ async function main(numberOfnews){
     reducedNewsId.forEach( async (id) => {
         const url = `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`
         const news = await fetchFunction(url)
-        console.log(news);
         await renderNews(news)
     })
     endAnimation()
